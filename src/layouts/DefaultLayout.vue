@@ -81,13 +81,31 @@
           flat
           solo-inverted
           prepend-inner-icon="search"
-          label="Search"
+          label="Procurar"
           class="hidden-sm-and-down"
         ></v-text-field>
         <v-spacer></v-spacer>
-        <v-btn icon>
-          <v-icon>apps</v-icon>
-        </v-btn>
+        
+        <v-menu offset-y>
+          <v-btn
+            slot="activator"
+            dark
+            icon
+          >
+            <v-icon>apps</v-icon>
+          </v-btn>
+
+          <v-list>
+            <v-list-tile
+              v-for="(link, i) in links"
+              :key="i"
+              @click=""
+            >
+              <v-list-tile-title>{{ link.title }}</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+        
         <v-btn icon>
           <v-icon>notifications</v-icon>
         </v-btn>
@@ -191,36 +209,31 @@ export default{
     dialog: false,
     drawer: null,
     items: [
-      { icon: 'contacts', text: 'Contacts' },
-      { icon: 'history', text: 'Frequently contacted' },
-      { icon: 'content_copy', text: 'Duplicates' },
+      { icon: 'business', text: 'Quadro Principal' },
       {
         icon: 'keyboard_arrow_up',
         'icon-alt': 'keyboard_arrow_down',
-        text: 'Labels',
-        model: true,
-        children: [
-          { icon: 'add', text: 'Create label' },
-        ],
-      },
-      {
-        icon: 'keyboard_arrow_up',
-        'icon-alt': 'keyboard_arrow_down',
-        text: 'More',
+        text: 'Indicadores',
         model: false,
         children: [
-          { text: 'Import' },
-          { text: 'Export' },
-          { text: 'Print' },
-          { text: 'Undo changes' },
-          { text: 'Other contacts' },
+          { text: 'Qualidade e produtividade' },
+          { text: 'Capacidade e eficacia (Real Time)' },
+          { text: 'Gestão de tempo' },
+          { text: 'Eficiência (Técnicos)' },
+          { text: 'Clientes' },
+          { text: 'Atendimentos' },
         ]
       },
-      { icon: 'settings', text: 'Settings' },
-      { icon: 'chat_bubble', text: 'Send feedback' },
-      { icon: 'help', text: 'Help' },
-      { icon: 'phonelink', text: 'App downloads' },
-      { icon: 'keyboard', text: 'Go to the old version' },
+      { icon: 'dashboard', text: 'Dashboard' },
+      { icon: 'settings', text: 'Configuraçẽos' },
+    ],
+    links: [
+      { title: 'App.' },
+      { title: 'Base de conhecimento' },
+      { title: 'Mantis' },
+      { title: 'Updates' },
+      { title: 'Webmail' },
+      { title: 'FOP' },
     ],
   }),
   props: {
