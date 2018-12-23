@@ -85,7 +85,6 @@
           class="hidden-sm-and-down"
         ></v-text-field>
         <v-spacer></v-spacer>
-        
         <v-menu offset-y>
           <v-btn
             slot="activator"
@@ -94,18 +93,20 @@
           >
             <v-icon>apps</v-icon>
           </v-btn>
-
-          <v-list>
-            <v-list-tile
-              v-for="(link, i) in links"
-              :key="i"
-              @click=""
-            >
-              <v-list-tile-title>{{ link.title }}</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
+          <v-container grid-list-lg text-xs-center class="white">
+            <v-layout row wrap>
+              <v-flex
+                v-for="(link, i) in links"
+                :key="i"
+                xs4
+                @click=""
+              >
+                <v-icon>{{ link.icon }}</v-icon>
+                <div>{{ link.text }}</div>
+              </v-flex>
+            </v-layout>
+          </v-container>
         </v-menu>
-        
         <v-btn icon>
           <v-icon>notifications</v-icon>
         </v-btn>
@@ -228,12 +229,12 @@ export default{
       { icon: 'settings', text: 'Configuraçẽos' },
     ],
     links: [
-      { title: 'App.' },
-      { title: 'Base de conhecimento' },
-      { title: 'Mantis' },
-      { title: 'Updates' },
-      { title: 'Webmail' },
-      { title: 'FOP' },
+      { text: 'App.', icon: 'shopping_cart' },
+      { text: 'Base de conhecimento', icon: 'info' },
+      { text: 'Mantis', icon: 'bug_report' },
+      { text: 'Updates', icon: 'new_releases' },
+      { text: 'Webmail', icon: 'mail' },
+      { text: 'FOP', icon: 'phone' },
     ],
   }),
   props: {
